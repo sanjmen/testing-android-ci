@@ -21,4 +21,4 @@ before_script:
 
 script:
   - ./gradlew connectedAndroidTest
-  - if [[ $TRAVIS_BRANCH == 'master' ]]; then ./gradlew app:crashlyticsUploadDistributionDebug; fi
+  - if [[ $(git branch | sed -n -e 's/^\* \(.*\)/\1/p') == 'master' ]]; then ./gradlew app:crashlyticsUploadDistributionDebug; fi
