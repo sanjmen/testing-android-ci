@@ -21,4 +21,4 @@ before_script:
 
 script:
   - ./gradlew connectedAndroidTest
-  - ./gradlew app:crashlyticsUploadDistributionDebug
+  - if [[ $TRAVIS_BRANCH == 'master' ]]; ./gradlew app:crashlyticsUploadDistributionDebug; fi
