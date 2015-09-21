@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mBody = (TextView) findViewById(R.id.body);
 
-        mBody.setText("Hola mundo!");
+        mBody.setText("Hola mundo 2!");
     }
 
     @Override
