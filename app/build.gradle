@@ -31,6 +31,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            applicationVariants.all { variant ->
+                if (variant.buildType.name == 'debug') {
+                    variant.mergedFlavor.versionCode = System.getenv("TRAVIS_BUILD_NUMBER") as Integer ?: 1;
+                    variant.mergedFlavor.versionName = String.format("1.0b%d", variant.mergedFlavor.versionCode);
+                }
+            }
+        }
     }
 }
 
