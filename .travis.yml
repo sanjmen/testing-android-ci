@@ -1,5 +1,6 @@
 language: android
 jdk: oraclejdk7
+
 env:
   matrix:
       - ANDROID_SDKS=android-22 ANDROID_TARGET=android-22 ANDROID_ABI=armeabi-v7a
@@ -20,5 +21,6 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - ./gradlew deviceCheck
+  - ./gradlew connectedCheck
   - ./submit.sh
+  - echo "Travis branch is $TRAVIS_BRANCH and commit is $TRAVIS_COMMIT"
