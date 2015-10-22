@@ -1,6 +1,9 @@
 language: android
 jdk: oraclejdk7
 
+before_install:
+  - "export TRAVIS_COMMIT_MESSAGE=\"$(git log -1 HEAD --pretty=format:%s)\""
+
 env:
   matrix:
       - ANDROID_SDKS=android-22 ANDROID_TARGET=android-22 ANDROID_ABI=armeabi-v7a

@@ -39,7 +39,12 @@ android {
             variant.mergedFlavor.versionName = String.format("1.0b%d", variant.mergedFlavor.versionCode);
         }
         project.ext.set("archivesBaseName", "AndroidTravisCITest-" + versionName + "-" + versionCode);
-        project.ext.betaDistributionReleaseNotes = System.getenv("TRAVIS_COMMIT_MESSAGE");
+
+        def cmd = "git log -1 HEAD --pretty=format:%s"
+        def proc = cmd.execute()
+        def commit_message = proc.text.trim()
+
+        ext.betaDistributionReleaseNotes = commit_message
     }
 }
 
