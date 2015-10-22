@@ -1,5 +1,5 @@
 #!/bin/bash
 
-if [[ $TRAVIS_BRANCH == 'master' ]]; then
+if [[ $TRAVIS_BRANCH == 'submit-apk' ]]; then
     ./gradlew app:crashlyticsUploadDistributionDebug;
 fi
