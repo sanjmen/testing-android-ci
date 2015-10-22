@@ -38,14 +38,15 @@ android {
         if (is_travis) {
             variant.mergedFlavor.versionCode = System.getenv("TRAVIS_BUILD_NUMBER") as Integer ?: 1;
             variant.mergedFlavor.versionName = String.format("1.0b%d", variant.mergedFlavor.versionCode);
+
+            def cmd = "git log -1 HEAD --pretty=format:%s"
+            def proc = cmd.execute()
+            def commit_message = proc.text.trim()
+
+            ext.betaDistributionReleaseNotes = commit_message
         }
         project.ext.set("archivesBaseName", "AndroidTravisCITest-" + versionName + "-" + versionCode);
 
-        def cmd = "git log -1 HEAD --pretty=format:%s"
-        def proc = cmd.execute()
-        def commit_message = proc.text.trim()
-
-        ext.betaDistributionReleaseNotes = commit_message
     }
 }
 
