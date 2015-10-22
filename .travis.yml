@@ -24,6 +24,5 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - ./gradlew connectedCheck
+  - ./build.sh
   - ./submit.sh
-  - echo "Travis branch is $TRAVIS_BRANCH and commit is $TRAVIS_COMMIT_MESSAGE"
