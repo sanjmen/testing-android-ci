@@ -23,4 +23,4 @@ before_script:
 script:
   - ./gradlew connectedCheck
   - ./submit.sh
-  - echo "Travis branch is $TRAVIS_BRANCH and commit is $TRAVIS_COMMIT"
+  - echo "Travis branch is $TRAVIS_BRANCH and commit is $TRAVIS_COMMIT_MESSAGE"

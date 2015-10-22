@@ -39,6 +39,7 @@ android {
             variant.mergedFlavor.versionName = String.format("1.0b%d", variant.mergedFlavor.versionCode);
         }
         project.ext.set("archivesBaseName", "AndroidTravisCITest-" + versionName + "-" + versionCode);
+        project.ext.betaDistributionReleaseNotes = System.getenv("TRAVIS_COMMIT_MESSAGE");
     }
 }
 
