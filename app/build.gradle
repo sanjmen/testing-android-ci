@@ -32,10 +32,7 @@ android {
         }
 
         debug {
-            def cmd = "git log -1 HEAD --pretty=format:%s"
-            def proc = cmd.execute()
-            def commit_message = proc.text.trim()
-            ext.betaDistributionReleaseNotes = commit_message
+            ext.betaDistributionReleaseNotesFilePath = '/tmp/release-notes'
         }
     }
 
