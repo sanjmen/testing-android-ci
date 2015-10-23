@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -ev
 ./gradlew connectedCheck
 if [ $? -ne 0 ]; then exit 1; fi
 ./gradlew app:generateDebugSources;
