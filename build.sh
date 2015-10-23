@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
+set -ev
 ./gradlew connectedCheck
-if [ $? -ne 0 ]; then exit 1; fi
-./gradlew domain:test
-if [ $? -ne 0 ]; then exit 1; fi
-./gradlew data:test
 if [ $? -ne 0 ]; then exit 1; fi
 ./gradlew app:generateDebugSources;
 if [ $? -ne 0 ]; then exit 1; fi
