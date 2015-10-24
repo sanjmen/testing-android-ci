@@ -1,22 +1,32 @@
 language: android
+sudo: false
 jdk: oraclejdk7
-
-before_install:
-  - "export TRAVIS_COMMIT_MESSAGE=\"$(git log -1 HEAD --pretty=format:%s)\""
 
 env:
   matrix:
-      - ANDROID_SDKS=android-22 ANDROID_TARGET=android-22 ANDROID_ABI=armeabi-v7a
+    - ANDROID_API_LEVEL=23
+      ANDROID_BUILD_TOOLS_VERSION=23.0.1
+      ANDROID_TARGET=android-22
+      ANDROID_ABI=armeabi-v7a
 
 android:
   components:
-    - build-tools-22.0.1
-    - android-22
-    - sys-img-armeabi-v7a-android-22
+    - tools
+    - platform-tools
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    - android-$ANDROID_API_LEVEL
+    - addon-google_apis-google-$ANDROID_API_LEVEL
     - extra-android-support
     - extra-android-m2repository
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    #- sys-img-armeabi-v7a-android-$ANDROID_API_LEVEL
+    #- sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
+    - $ANDROID_TARGET
+    - sys-img-armeabi-v7a-$ANDROID_TARGET
 
 before_install:
+  - "export TRAVIS_COMMIT_MESSAGE=\"$(git log -1 HEAD --pretty=format:%s)\""
   # Create and start emulator
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
   - emulator -avd test -no-skin -no-audio -no-window &
@@ -30,4 +40,5 @@ script:
   - ./build.sh
 
 after_success:
-  - ./submit.sh
+  #- ./submit.sh
+  - echo "success"
