@@ -15,13 +15,13 @@ repositories {
 }
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.cuerty.androidtraviscitest"
         minSdkVersion 14
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -53,7 +53,7 @@ dependencies {
     compile project(':domain')
     compile project(':data')
 
-    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:appcompat-v7:23.0.0'
     compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
         transitive = true;
     }
